@@ -1,0 +1,17 @@
+table, th, td{
+    border: solid 1px black;
+}
+
+p{
+    color:rgb(32, 65, 65);
+    border: solid 2px black;
+    display: inline-block;
+    width: 35%;
+    height: 25px;
+    
+}
+
+.links{
+    text-align: center;
+    
+}
