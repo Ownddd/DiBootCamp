@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+</head>
+<body>
+
+<form id="userForm">
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="firstname"><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lastname"><br><br>
+    <input type="submit" value="Submit" id="submit">
+</form>
+
+<ul class="usersAnswer"></ul>
+
+<script>
+    // Retrieve the form and console.log it
+    const userForm = document.getElementById('userForm');
+    console.log(userForm);
+
+    // Retrieve the inputs by their id and console.log them
+    const firstNameInput = document.getElementById('fname');
+    const lastNameInput = document.getElementById('lname');
+    console.log(firstNameInput, lastNameInput);
+
+    // Retrieve the inputs by their name attribute and console.log them
+    const firstNameByName = document.getElementsByName('firstname')[0];
+    const lastNameByName = document.getElementsByName('lastname')[0];
+    console.log(firstNameByName, lastNameByName);
+
+    // Add a submit event listener to the form
+    userForm.addEventListener('submit', function(event) {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        // Get the values of the input tags
+        const firstNameValue = firstNameInput.value;
+        const lastNameValue = lastNameInput.value;
+
+        // Make sure that they are not empty
+        if (firstNameValue.trim() !== '' && lastNameValue.trim() !== '') {
+            // Create an li per input value
+            const firstNameLi = document.createElement('li');
+            firstNameLi.textContent = firstNameValue;
+
+            const lastNameLi = document.createElement('li');
+            lastNameLi.textContent = lastNameValue;
+
+            // Append them to the <ul class="usersAnswer"></ul>
+            const usersAnswerList = document.querySelector('.usersAnswer');
+            usersAnswerList.innerHTML = ''; // Clear existing content
+            usersAnswerList.appendChild(firstNameLi);
+            usersAnswerList.appendChild(lastNameLi);
+        }
+    });
+</script>
+
+</body>
+</html>
